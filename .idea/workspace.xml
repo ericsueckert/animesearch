@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ed51587-8d2c-495b-91a3-e1cace924ea9" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.index.html.swp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/autocomplete.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/login.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/script/.search.js.swp" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/script/search.js" afterPath="$PROJECT_DIR$/script/search.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/titleParse.py" afterPath="$PROJECT_DIR$/titleParse.py" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -32,8 +28,8 @@
       <file leaf-file-name="search.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/script/search.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="50" column="40" lean-forward="false" selection-start-line="50" selection-start-column="40" selection-end-line="50" selection-end-column="40" />
+            <state relative-caret-position="556">
+              <caret line="179" column="40" lean-forward="true" selection-start-line="179" selection-start-column="40" selection-end-line="179" selection-end-column="40" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -44,8 +40,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="55" lean-forward="false" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="55" />
+            <state relative-caret-position="225">
+              <caret line="15" column="11" lean-forward="true" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -59,8 +55,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/script/search.js" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -71,7 +67,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="772" />
+    <option name="x" value="636" />
     <option name="y" value="22" />
     <option name="width" value="1327" />
     <option name="height" value="1058" />
@@ -226,15 +222,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1481701657011</updated>
-      <workItem from="1481701659483" duration="9714000" />
+      <workItem from="1481701659483" duration="23230000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9714000" />
+    <option name="totallyTimeSpent" value="23230000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="772" y="22" width="1327" height="1058" extended-state="0" />
+    <frame x="636" y="22" width="1327" height="1058" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1801055" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -314,10 +310,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/script/autocomplete.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2055">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <marker date="1481700415000" expanded="true" signature="6625:8042" ph="..." />
+            <marker date="1481700415000" expanded="true" signature="6644:6976" ph="..." />
+            <marker date="1481700415000" expanded="true" signature="7083:7514" ph="..." />
+            <marker date="1481700415000" expanded="true" signature="7101:7497" ph="..." />
+            <marker date="1481700415000" expanded="true" signature="7620:8026" ph="..." />
+            <marker date="1481700415000" expanded="true" signature="7638:8009" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/script/search.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="50" column="40" lean-forward="false" selection-start-line="50" selection-start-column="40" selection-end-line="50" selection-end-column="40" />
+        <state relative-caret-position="556">
+          <caret line="179" column="40" lean-forward="true" selection-start-line="179" selection-start-column="40" selection-end-line="179" selection-end-column="40" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
@@ -326,8 +338,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="55" lean-forward="false" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="55" />
+        <state relative-caret-position="225">
+          <caret line="15" column="11" lean-forward="true" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
           <folding />
         </state>
       </provider>
