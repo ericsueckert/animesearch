@@ -1,51 +1,85 @@
 <!DOCTYPE html>
+<!--
+Eric Eckert
+December 15, 2016
+-->
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Anime Search Engine</title>
-
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-sanitize.min.js"></script>
     <script src="script/xml2json.js"></script>
     <script type="text/javascript" src="script/autocomplete.js"></script>
     <script src="script/search.js" type="text/javascript"></script>
+    <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="style/autocomplete.css">
     <link rel="stylesheet" href="style/normalize.css">
     <link rel="stylesheet" href="style/skeleton.css">
 
 </head>
-<body ng-app="AnimeSearchApp">
-<h1>
-    Ultimate Anime Search Engine
-</h1>
-<div ng-controller="AnimeCtrl">
+<body ng-app="AnimeSearchApp" ng-controller="AnimeCtrl">
+<div class="row">
+    <div class="two columns"></div>
+    <div class="ten columns">
+    <h1 class="hero-heading offset-by-five">
+        Anime Search Engine
+    </h1>
+    </div>
+</div>
+
+<div class="offset-by-one">
     <div class="container">
         <label>Search anime:</label>
         <form ng-controller="AnimeCtrl" ng-submit="searchAnime">
             <autocomplete ng-model="result" attr-placeholder="type to search anime..." click-activation="true"
                           data="animeTitles" on-type="updateAutocomplete" on-select="searchAnime"></autocomplete>
-
-            <!--<input type="text" class="form-control" placeholder="type to search anime..." ng-model="selectedAnime" typeahead="anime as anime.title for anime in animeData | filter:$viewValue | limitTo:3"> -->
-            <input type="submit">
         </form>
     </div>
 
 </div>
 
-<div ng-controller="AnimeCtrl">
-<div class="container">
-    <div ng-bind-html="header">
+<div>
+    <div class="container">
+        <div id="responseHead">
+        </div>
+        <span id="rating"></span>
+        <div id="subInfo">
 
+        </div>
+        <br>
+        <div id="picture">
+        </div>
+        <br>
+        <h5 id="synopsisHead"></h5>
+        <p id="summary">
+            <br>
+        <div class="row">
+            <div class="one-half column value">
+                <h5 class="value-heading" id="relatedHead"></h5>
+                <div id="relatedList"></div>
+            </div>
+            <div class="one-half column value">
+                <h5 id="creditHead"></h5>
+                <div id="credList"></div>
+            </div>
+        </div>
+        <br>
+        <h5 id="newsHead"></h5>
+        <div id="newsList"></div>
+        <br>
+        <div class="row">
+            <div class="one-half column value">
+                <h5 id="castHead"></h5>
+                <div id="castList"></div>
+            </div>
+            <div class="one-half column value">
+                <h5 id="staffHead"></h5>
+                <div id="staffList"></div>
+            </div>
+        </div>
     </div>
-    <img ng-bind-html="picture">
-
-
-    </img>
-    <p ng-bind-html="summary">
-
-    </p>
-</div>
 </div>
 </body>
 </html>
