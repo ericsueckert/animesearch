@@ -22,10 +22,10 @@
                 <div class="container">
                     <label>Search anime:</label>
                     <form ng-controller="AnimeCtrl" ng-submit="searchAnime">
-                       <!-- <autocomplete ng-model="result" attr-placeholder="type to search anime..." click-activation="true"
-                                      data="newanime" on-type="updateAutocomplete" on-select="searchAnime"></autocomplete>
-                                      -->
-                        <input type="text" class="form-control" placeholder="type to search anime..." ng-model="selectedAnime" typeahead="anime as anime.title for anime in animeData | filter:$viewValue | limitTo:3">
+                       <autocomplete ng-model="result" attr-placeholder="type to search anime..." click-activation="true"
+                                      data="animeTitles" on-type="updateAutocomplete" on-select="searchAnime"></autocomplete>
+
+                        <!--<input type="text" class="form-control" placeholder="type to search anime..." ng-model="selectedAnime" typeahead="anime as anime.title for anime in animeData | filter:$viewValue | limitTo:3"> -->
                     <input type="submit">
                     </form>
                 </div>
