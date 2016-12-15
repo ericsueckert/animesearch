@@ -1,42 +1,51 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Ultimate Anime Search Engine</title>
+<head>
+    <meta charset="UTF-8">
+    <title>Anime Search Engine</title>
 
 
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
-        <script src="xml2json.js"></script>
-        <script type="text/javascript" src="script/autocomplete.js"></script>
-        <script src="script/search.js" type="text/javascript"></script>
-        <link rel="stylesheet" href="style/autocomplete.css">
-        <link rel="stylesheet" href="style/normalize.css">
-        <link rel="stylesheet" href="style/skeleton.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-sanitize.min.js"></script>
+    <script src="script/xml2json.js"></script>
+    <script type="text/javascript" src="script/autocomplete.js"></script>
+    <script src="script/search.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="style/autocomplete.css">
+    <link rel="stylesheet" href="style/normalize.css">
+    <link rel="stylesheet" href="style/skeleton.css">
 
-    </head>
-    <body ng-app="AnimeSearchApp">
-        <h1>
-            Ultimate Anime Search Engine
-        </h1>
-        <div ng-controller="AnimeCtrl">
-                <div class="container">
-                    <label>Search anime:</label>
-                    <form ng-controller="AnimeCtrl" ng-submit="searchAnime">
-                       <autocomplete ng-model="result" attr-placeholder="type to search anime..." click-activation="true"
-                                      data="animeTitles" on-type="updateAutocomplete" on-select="searchAnime"></autocomplete>
+</head>
+<body ng-app="AnimeSearchApp">
+<h1>
+    Ultimate Anime Search Engine
+</h1>
+<div ng-controller="AnimeCtrl">
+    <div class="container">
+        <label>Search anime:</label>
+        <form ng-controller="AnimeCtrl" ng-submit="searchAnime">
+            <autocomplete ng-model="result" attr-placeholder="type to search anime..." click-activation="true"
+                          data="animeTitles" on-type="updateAutocomplete" on-select="searchAnime"></autocomplete>
 
-                        <!--<input type="text" class="form-control" placeholder="type to search anime..." ng-model="selectedAnime" typeahead="anime as anime.title for anime in animeData | filter:$viewValue | limitTo:3"> -->
-                    <input type="submit">
-                    </form>
-                </div>
+            <!--<input type="text" class="form-control" placeholder="type to search anime..." ng-model="selectedAnime" typeahead="anime as anime.title for anime in animeData | filter:$viewValue | limitTo:3"> -->
+            <input type="submit">
+        </form>
+    </div>
 
-        </div>
+</div>
+
+<div ng-controller="AnimeCtrl">
+<div class="container">
+    <div ng-bind-html="header">
+
+    </div>
+    <img ng-bind-html="picture">
 
 
-        <div id="response">
-            <div id="basic" class="container">
-                <pre>{animeData | json}}</pre>
-            </div>
-        </div>
-    </body>
+    </img>
+    <p ng-bind-html="summary">
+
+    </p>
+</div>
+</div>
+</body>
 </html>
