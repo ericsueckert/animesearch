@@ -56,7 +56,17 @@ animeApp.factory('AnimeRetriever', function ($http, $timeout) {
         return $timeout(function () {
             return $http({
                 method: 'GET',
-                url: 'https://cdn.animenewsnetwork.com/encyclopedia/api.xml?anime=' + ID
+                url: 'https://cdn.animenewsnetwork.com/encyclopedia/api.xml?title=' + ID
+            });
+        }, 1000);
+    };
+
+    AnimeRetriever.batchQueryID = function (ID) {
+        console.log(ID);
+        return $timeout(function () {
+            return $http({
+                method: 'GET',
+                url: 'https://cdn.animenewsnetwork.com/encyclopedia/api.xml?title=' + ID
             });
         }, 1000);
     };
@@ -82,6 +92,36 @@ animeApp.controller('AnimeCtrl', ['$scope', '$sce', 'AnimeRetriever', function (
 
     function add(elementID, content) {
         set(elementID, get(elementID).concat(content));
+    }
+
+    function getAnnObject(obj) {
+        if (obj.anime) {
+            return obj.anime;
+        }
+        else if (obj.manga) {
+            return obj.manga;
+        }
+    }
+
+    function relatedWorksSuccessUpdate(response) {
+        var x2js = new X2JS();
+        var animeSubResponse = response.data;
+        var jsonSubAnime = x2js.xml_str2json(animeSubResponse);
+        var subWork;
+        console.log("Subquery is: ");
+        console.log(jsonSubAnime.ann);
+        subWork = getAnnObject(jsonSubAnime.ann);
+        console.log(subWork);
+        if (angular.isArray(subWork)) {
+            console.log("it's an array");
+            for (var i = 0; i < subWork.length; i++) {
+                add("relatedList", "<li>" + subWork[i]._name + "</li>");
+            }
+        }
+        else {
+            console.log("it's not an array");
+            add("relatedList", "<li>" + subWork._name + "</li>");
+        }
     }
 
     $scope.getAnime = function () {
@@ -242,59 +282,41 @@ animeApp.controller('AnimeCtrl', ['$scope', '$sce', 'AnimeRetriever', function (
             //Query related anime
             if (anime['related-next']) {
                 if (anime['related-next'].length > 1) {
+
                     //Bind heading
                     set("relatedHead", "Related Works");
                     //Query for each element in list
+                    var idList = [];
                     for (var i = 0; i < anime['related-next'].length; i++) {
+                        idList.push(anime['related-next'][i]._id);
+                    }
+                    console.log(idList);
+                    ids = idList.join('\/');
+                    console.log(ids);
                         //Submit query
-                        AnimeRetriever.queryID(anime['related-next'][i]._id).then(function (response) {
+                        AnimeRetriever.queryID(ids).then(function (response) {
                             //Successful subquery
                             console.log("SubQuery successful");
-                            animeSubResponse = response.data;
-                            //convert to json
-                            var jsonSubAnime = x2js.xml_str2json(animeSubResponse);
-                            //NOTE: THIS WILL NOT WORK FOR MANGA
-                            //TODO: in the future find a workaround. Take the first element in the jsonSubAnime.ann object.
-                            var subWork;
-                            if (jsonSubAnime.ann.anime) {
-                                subWork = jsonSubAnime.ann.anime;
-                            }
-                            else if (jsonSubAnime.ann.manga) {
-                                subWork = jsonSubAnime.ann.anime;
-                            }
-                            console.log(subWork);
-                            //bind name to list
-                            add("relatedList", "<li>" + subWork._name + "</li>");
+                            relatedWorksSuccessUpdate(response);
                         });
-                    }
                 }
                 else if (!anime['related-next'].isArray) {
-                    //var relatedList = "<ul>";
                     set("relatedHead", "Related Works");
-                    //set("relatedList", "<ul>");
                     console.log(anime['related-next']._id);
                     AnimeRetriever.queryID(anime['related-next']._id).then(function (response) {
                         console.log("SubQuery successful");
-                        animeSubResponse = response.data;
-                        var jsonSubAnime = x2js.xml_str2json(animeSubResponse);
-                        var subAnime = jsonSubAnime.ann.anime;
-                        console.log(subAnime);
-                        add("relatedList", "<li>" + subAnime._name + "</li>");
+                        relatedWorksSuccessUpdate(response);
                     });
                 }
             }
 
-            if (anime['related-next']) {
+            if (anime['related-prev']) {
                 if (anime['related-prev'].length > 1) {
                     set("relatedHead", "Related Works");
                     for (var i = 0; i < anime['related-prev'].length; i++) {
                         AnimeRetriever.queryID(anime['related-prev'][i]._id).then(function (response) {
                             console.log("SubQuery successful");
-                            animeSubResponse = response.data;
-                            var jsonSubAnime = x2js.xml_str2json(animeSubResponse);
-                            var subAnime = jsonSubAnime.ann.anime;
-                            console.log(subAnime);
-                            add("relatedList", "<li>" + subAnime._name + "</li>");
+                            relatedWorksSuccessUpdate(response);
                         });
                     }
                 }
@@ -303,17 +325,7 @@ animeApp.controller('AnimeCtrl', ['$scope', '$sce', 'AnimeRetriever', function (
                     console.log(anime['related-prev']._id);
                     AnimeRetriever.queryID(anime['related-prev']._id).then(function (response) {
                         console.log("SubQuery successful");
-                        animeSubResponse = response.data;
-                        var jsonSubAnime = x2js.xml_str2json(animeSubResponse);
-                        if (jsonSubAnime.ann.anime) {
-                            subWork = jsonSubAnime.ann.anime;
-                        }
-                        else if (jsonSubAnime.ann.manga) {
-                            subWork = jsonSubAnime.ann.anime;
-                        }
-                        //var subAnime = jsonSubAnime.ann.anime;
-                        console.log(subWork);
-                        add("relatedList", "<li>" + subWork._name + "</li>");
+                        relatedWorksSuccessUpdate(response);
                     });
                 }
             }

@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ed51587-8d2c-495b-91a3-e1cace924ea9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/script/search.js" afterPath="$PROJECT_DIR$/script/search.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -24,11 +23,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="search.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="search.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/script/search.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="531">
-              <caret line="354" column="41" lean-forward="false" selection-start-line="354" selection-start-column="41" selection-end-line="354" selection-end-column="41" />
+            <state relative-caret-position="315">
+              <caret line="302" column="58" lean-forward="false" selection-start-line="302" selection-start-column="58" selection-end-line="302" selection-end-column="58" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -36,10 +35,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="31">
+            <state relative-caret-position="166">
               <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
               <folding />
             </state>
@@ -49,7 +48,7 @@
       <file leaf-file-name="skeleton.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/style/skeleton.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1200">
+            <state relative-caret-position="15">
               <caret line="80" column="8" lean-forward="false" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="8" />
               <folding />
             </state>
@@ -254,12 +253,12 @@
       <updated>1481701657011</updated>
       <workItem from="1481701659483" duration="24908000" />
       <workItem from="1481804014209" duration="22857000" />
-      <workItem from="1481861755652" duration="712000" />
+      <workItem from="1481861755652" duration="3357000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48477000" />
+    <option name="totallyTimeSpent" value="51122000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="598" y="132" width="1327" height="878" extended-state="0" />
@@ -347,14 +346,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/script/app.js" />
-    <entry file="file://$PROJECT_DIR$/style/skeleton.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1200">
-          <caret line="80" column="8" lean-forward="false" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/style/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -363,21 +354,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/script/search.js">
+    <entry file="file://$PROJECT_DIR$/style/skeleton.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="531">
-          <caret line="354" column="41" lean-forward="false" selection-start-line="354" selection-start-column="41" selection-end-line="354" selection-end-column="41" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+        <state relative-caret-position="15">
+          <caret line="80" column="8" lean-forward="false" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="31">
+        <state relative-caret-position="166">
           <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/search.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="302" column="58" lean-forward="false" selection-start-line="302" selection-start-column="58" selection-end-line="302" selection-end-column="58" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
