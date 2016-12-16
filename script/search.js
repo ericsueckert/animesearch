@@ -176,8 +176,6 @@ animeApp.controller('AnimeCtrl', ['$scope', '$sce', 'AnimeRetriever', function (
 
             console.log(anime);
 
-            delete $scope.summary;
-
             //console.log("binding header");
 
             //Bind header
@@ -186,7 +184,9 @@ animeApp.controller('AnimeCtrl', ['$scope', '$sce', 'AnimeRetriever', function (
             set("responseHead", header);
 
             //Bind rating
-            set("rating", "<b>Weighted score:</b> " + anime.ratings._weighted_score + "/10");
+            if (anime.ratings) {
+                set("rating", "<b>Weighted score:</b> " + anime.ratings._weighted_score + "/10");
+            }
 
             //Bind everything in Info fields
             var type;
@@ -240,66 +240,82 @@ animeApp.controller('AnimeCtrl', ['$scope', '$sce', 'AnimeRetriever', function (
             set("subInfo", subInfo);
 
             //Query related anime
-            if (anime['related-next'].length > 1) {
-                //Bind heading
-                set("relatedHead", "Related Works");
-                //Query for each element in list
-                for (var i = 0; i < anime['related-next'].length; i++) {
-                    //Submit query
-                    AnimeRetriever.queryID(anime['related-next'][i]._id).then(function (response) {
-                        //Successful subquery
+            if (anime['related-next']) {
+                if (anime['related-next'].length > 1) {
+                    //Bind heading
+                    set("relatedHead", "Related Works");
+                    //Query for each element in list
+                    for (var i = 0; i < anime['related-next'].length; i++) {
+                        //Submit query
+                        AnimeRetriever.queryID(anime['related-next'][i]._id).then(function (response) {
+                            //Successful subquery
+                            console.log("SubQuery successful");
+                            animeSubResponse = response.data;
+                            //convert to json
+                            var jsonSubAnime = x2js.xml_str2json(animeSubResponse);
+                            //NOTE: THIS WILL NOT WORK FOR MANGA
+                            //TODO: in the future find a workaround. Take the first element in the jsonSubAnime.ann object.
+                            var subWork;
+                            if (jsonSubAnime.ann.anime) {
+                                subWork = jsonSubAnime.ann.anime;
+                            }
+                            else if (jsonSubAnime.ann.manga) {
+                                subWork = jsonSubAnime.ann.anime;
+                            }
+                            console.log(subWork);
+                            //bind name to list
+                            add("relatedList", "<li>" + subWork._name + "</li>");
+                        });
+                    }
+                }
+                else if (!anime['related-next'].isArray) {
+                    //var relatedList = "<ul>";
+                    set("relatedHead", "Related Works");
+                    //set("relatedList", "<ul>");
+                    console.log(anime['related-next']._id);
+                    AnimeRetriever.queryID(anime['related-next']._id).then(function (response) {
                         console.log("SubQuery successful");
                         animeSubResponse = response.data;
-                        //convert to json
                         var jsonSubAnime = x2js.xml_str2json(animeSubResponse);
-                        //NOTE: THIS WILL NOT WORK FOR MANGA
-                        //TODO: in the future find a workaround. Take the first element in the jsonSubAnime.ann object.
                         var subAnime = jsonSubAnime.ann.anime;
                         console.log(subAnime);
-                        //bind name to list
                         add("relatedList", "<li>" + subAnime._name + "</li>");
                     });
                 }
-            }
-            else if (!anime['related-next'].isArray) {
-                //var relatedList = "<ul>";
-                set("relatedHead", "Related Works");
-                //set("relatedList", "<ul>");
-                console.log(anime['related-next']._id);
-                AnimeRetriever.queryID(anime['related-next']._id).then(function (response) {
-                    console.log("SubQuery successful");
-                    animeSubResponse = response.data;
-                    var jsonSubAnime = x2js.xml_str2json(animeSubResponse);
-                    var subAnime = jsonSubAnime.ann.anime;
-                    console.log(subAnime);
-                    add("relatedList", "<li>" + subAnime._name + "</li>");
-                });
             }
 
-            if (anime['related-prev'].length > 1) {
-                set("relatedHead", "Related Works");
-                for (var i = 0; i < anime['related-prev'].length; i++) {
-                    AnimeRetriever.queryID(anime['related-prev'][i]._id).then(function (response) {
+            if (anime['related-next']) {
+                if (anime['related-prev'].length > 1) {
+                    set("relatedHead", "Related Works");
+                    for (var i = 0; i < anime['related-prev'].length; i++) {
+                        AnimeRetriever.queryID(anime['related-prev'][i]._id).then(function (response) {
+                            console.log("SubQuery successful");
+                            animeSubResponse = response.data;
+                            var jsonSubAnime = x2js.xml_str2json(animeSubResponse);
+                            var subAnime = jsonSubAnime.ann.anime;
+                            console.log(subAnime);
+                            add("relatedList", "<li>" + subAnime._name + "</li>");
+                        });
+                    }
+                }
+                else if (!anime['related-prev'].isArray) {
+                    set("relatedHead", "Related Works");
+                    console.log(anime['related-prev']._id);
+                    AnimeRetriever.queryID(anime['related-prev']._id).then(function (response) {
                         console.log("SubQuery successful");
                         animeSubResponse = response.data;
                         var jsonSubAnime = x2js.xml_str2json(animeSubResponse);
-                        var subAnime = jsonSubAnime.ann.anime;
-                        console.log(subAnime);
-                        add("relatedList", "<li>" + subAnime._name + "</li>");
+                        if (jsonSubAnime.ann.anime) {
+                            subWork = jsonSubAnime.ann.anime;
+                        }
+                        else if (jsonSubAnime.ann.manga) {
+                            subWork = jsonSubAnime.ann.anime;
+                        }
+                        //var subAnime = jsonSubAnime.ann.anime;
+                        console.log(subWork);
+                        add("relatedList", "<li>" + subWork._name + "</li>");
                     });
                 }
-            }
-            else if (!anime['related-prev'].isArray) {
-                set("relatedHead", "Related Works");
-                console.log(anime['related-prev']._id);
-                AnimeRetriever.queryID(anime['related-prev']._id).then(function (response) {
-                    console.log("SubQuery successful");
-                    animeSubResponse = response.data;
-                    var jsonSubAnime = x2js.xml_str2json(animeSubResponse);
-                    var subAnime = jsonSubAnime.ann.anime;
-                    console.log(subAnime);
-                    add("relatedList", "<li>" + subAnime._name + "</li>");
-                });
             }
 
             //Bind credit
@@ -336,7 +352,7 @@ animeApp.controller('AnimeCtrl', ['$scope', '$sce', 'AnimeRetriever', function (
                 set("newsHead", "News");
                 document.getElementById("newsList").innerHTML = newsList;
             }
-            else if (anime.news.length = 1) {
+            else if (anime.news.length == 1) {
                 newsList = "<ul><li><a href=\"" + anime.news._href + "\">" + anime.news.__text + "</a></li></ul>";
                 set("newsList", newsList);
             }
