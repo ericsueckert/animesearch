@@ -1,7 +1,7 @@
 /*
-Eric Eckert
+ Eric Eckert
 
-Dec 15, 2016
+ Dec 15, 2016
 
  */
 
@@ -108,18 +108,15 @@ animeApp.controller('AnimeCtrl', ['$scope', '$sce', 'AnimeRetriever', function (
         var animeSubResponse = response.data;
         var jsonSubAnime = x2js.xml_str2json(animeSubResponse);
         var subWork;
-        console.log("Subquery is: ");
-        console.log(jsonSubAnime.ann);
         subWork = getAnnObject(jsonSubAnime.ann);
+
         console.log(subWork);
         if (angular.isArray(subWork)) {
-            console.log("it's an array");
             for (var i = 0; i < subWork.length; i++) {
                 add("relatedList", "<li>" + subWork[i]._name + " (" + subWork[i]._precision + ")</li>");
             }
         }
         else {
-            console.log("it's not an array");
             add("relatedList", "<li>" + subWork._name + " (" + subWork._precision + ")</li>");
         }
     }
@@ -234,6 +231,7 @@ animeApp.controller('AnimeCtrl', ['$scope', '$sce', 'AnimeRetriever', function (
             var runtime = -1;
             var genres = [];
             var themes = [];
+            var websites = [];
             for (var i = 0; i < anime.info.length; i++) {
                 type = anime.info[i]._type;
                 //Set image
@@ -258,6 +256,9 @@ animeApp.controller('AnimeCtrl', ['$scope', '$sce', 'AnimeRetriever', function (
                 }
                 else if (type == "Themes") {
                     themes.push(anime.info[i].__text);
+                }
+                else if (type == "Official website") {
+                    websites.push("<li><a href=" + anime.info[i]._href + ">" + anime.info[i].__text + "</a></li>");
                 }
 
             }
@@ -290,15 +291,14 @@ animeApp.controller('AnimeCtrl', ['$scope', '$sce', 'AnimeRetriever', function (
                     for (var i = 0; i < anime['related-next'].length; i++) {
                         idList.push(anime['related-next'][i]._id);
                     }
-                    console.log(idList);
                     ids = idList.join('\/');
-                    console.log(ids);
-                        //Submit query
-                        AnimeRetriever.queryID(ids).then(function (response) {
-                            //Successful subquery
-                            console.log("SubQuery successful");
-                            relatedWorksSuccessUpdate(response);
-                        });
+
+                    //Submit query
+                    AnimeRetriever.queryID(ids).then(function (response) {
+                        //Successful subquery
+                        console.log("SubQuery successful");
+                        relatedWorksSuccessUpdate(response);
+                    });
                 }
                 else if (!anime['related-next'].isArray) {
                     set("relatedHead", "Related Works");
@@ -341,6 +341,7 @@ animeApp.controller('AnimeCtrl', ['$scope', '$sce', 'AnimeRetriever', function (
                 set("credList", credList);
             }
 
+            //Bind cast
             if (anime.cast.length > 0) {
                 var castList = "<ul>";
                 for (var i = 0; i < anime.cast.length; i++) {
@@ -353,6 +354,13 @@ animeApp.controller('AnimeCtrl', ['$scope', '$sce', 'AnimeRetriever', function (
                 set("castHead", "Cast");
                 set("castList", castList);
             }
+
+            //Bind websites
+            if (websites.length > 0) {
+                set("siteHead", "Official Websites");
+                set("siteList", "<ul>" + websites.join("") + "</ul>");
+            }
+
 
             //Display anime news
             if (anime.news.length >= 6) {
