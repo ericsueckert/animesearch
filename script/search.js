@@ -115,12 +115,12 @@ animeApp.controller('AnimeCtrl', ['$scope', '$sce', 'AnimeRetriever', function (
         if (angular.isArray(subWork)) {
             console.log("it's an array");
             for (var i = 0; i < subWork.length; i++) {
-                add("relatedList", "<li>" + subWork[i]._name + "</li>");
+                add("relatedList", "<li>" + subWork[i]._name + " (" + subWork[i]._precision + ")</li>");
             }
         }
         else {
             console.log("it's not an array");
-            add("relatedList", "<li>" + subWork._name + "</li>");
+            add("relatedList", "<li>" + subWork._name + " (" + subWork._precision + ")</li>");
         }
     }
 

@@ -23,11 +23,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="search.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="search.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/script/search.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="302" column="58" lean-forward="false" selection-start-line="302" selection-start-column="58" selection-end-line="302" selection-end-column="58" />
+            <state relative-caret-position="585">
+              <caret line="122" column="70" lean-forward="false" selection-start-line="122" selection-start-column="70" selection-end-line="122" selection-end-column="70" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -35,7 +35,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="166">
@@ -90,8 +90,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="598" />
-    <option name="y" value="132" />
+    <option name="x" value="440" />
+    <option name="y" value="99" />
     <option name="width" value="1327" />
     <option name="height" value="878" />
   </component>
@@ -253,15 +253,15 @@
       <updated>1481701657011</updated>
       <workItem from="1481701659483" duration="24908000" />
       <workItem from="1481804014209" duration="22857000" />
-      <workItem from="1481861755652" duration="3357000" />
+      <workItem from="1481861755652" duration="3567000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51122000" />
+    <option name="totallyTimeSpent" value="51332000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="598" y="132" width="1327" height="878" extended-state="0" />
+    <frame x="440" y="99" width="1327" height="878" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1801055" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -362,21 +362,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/script/search.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="122" column="70" lean-forward="false" selection-start-line="122" selection-start-column="70" selection-end-line="122" selection-end-column="70" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="166">
           <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/search.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="302" column="58" lean-forward="false" selection-start-line="302" selection-start-column="58" selection-end-line="302" selection-end-column="58" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
